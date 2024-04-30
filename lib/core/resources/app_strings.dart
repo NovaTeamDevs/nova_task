@@ -5,4 +5,6 @@ class AppStrings {
   static const welcomeGustUser = "سلام کاربر مهمان عزیز خوش آمدید";
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
   static const lastAddedTask = "جدیدترین وظیفه شما";
+  static const viewAll = "مشاهده همه";
+  static const todayTaskListHeader = "لیست کارهای امروز شما";
 }

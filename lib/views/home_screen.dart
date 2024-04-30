@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/category_widget.dart';
+import 'package:nova_task/core/widgets/list_header_widget.dart';
 import 'package:nova_task/core/widgets/task_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -54,7 +55,13 @@ class HomeScreen extends StatelessWidget {
                         const Text(AppStrings.lastAddedTask),
                         SizedBox(height: Dimens.small.h),
                         // last added task
-                        const TaskCardWidget()
+                        const TaskCardWidget(),
+                        SizedBox(height: Dimens.medium.h),
+                        // today task list header
+                        ListHeaderWidget(
+                          title: AppStrings.todayTaskListHeader,
+                          onPress: () {},
+                        )
                       ],
                     ),
                   )
@@ -66,7 +73,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 
 
 
