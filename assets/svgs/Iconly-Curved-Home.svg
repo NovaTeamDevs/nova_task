@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Iconly_Curved_Home_Background_Mask_" data-name="Iconly/Curved/Home (Background/Mask)" width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Iconly_Curved_Home" data-name="Iconly/Curved/Home" clip-path="url(#clip-path)">
+    <g id="Home" transform="translate(2.4 2)">
+      <path id="Stroke_2" data-name="Stroke 2" d="M3.919,3.41C5.365,2.246,7.615,0,9.558,0s4.237,2.235,5.7,3.41c3.305,3.065,3.918,2.672,3.918,8.3C19.172,20,17.213,20,9.586,20S0,20,0,11.713C0,6.082.614,6.475,3.919,3.41Z" fill="none" stroke="#c6cedd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke-dasharray="0 0"/>
+      <path id="Stroke_1" data-name="Stroke 1" d="M0,.5H5.815" transform="translate(6.679 13.637)" fill="none" stroke="#c6cedd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke-dasharray="0 0"/>
+    </g>
+  </g>
+</svg>
