@@ -4,5 +4,5 @@ class Dimens {
   static const medium = 12.0;
   static const large = 24.0;
 
-  static const pageMargin = 25.0;
+  static const pageMargin = 20.0;
 }
