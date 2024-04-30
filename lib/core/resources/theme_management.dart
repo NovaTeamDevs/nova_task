@@ -12,7 +12,8 @@ class ThemeManagement {
     ),
     textTheme: const TextTheme(
       titleMedium: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Color(0xFF10275A)),
-      bodyMedium: TextStyle(color: Color(0xFF10275A))
+      bodyMedium: TextStyle(color: Color(0xFF10275A)),
+      bodySmall: TextStyle(color: Color(0xFF575757),fontSize: 12,fontWeight: FontWeight.w400)
     )
   );
 
