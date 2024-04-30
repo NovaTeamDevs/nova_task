@@ -4,4 +4,5 @@ class AppStrings {
   static const appVersion = "ورژن 1.0.0";
   static const welcomeGustUser = "سلام کاربر مهمان عزیز خوش آمدید";
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
+  static const lastAddedTask = "جدیدترین وظیفه شما";
 }

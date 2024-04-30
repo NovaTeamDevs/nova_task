@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/category_widget.dart';
+import 'package:nova_task/core/widgets/task_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   // category list
                   SizedBox(
-                    height: 125.h,
+                    height: 115.h,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 10,
@@ -43,7 +45,19 @@ class HomeScreen extends StatelessWidget {
                         },
                     ),
                   ),
-
+                  // last added task And today task list
+                  Padding(
+                    padding: const EdgeInsets.all(Dimens.pageMargin),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(AppStrings.lastAddedTask),
+                        SizedBox(height: Dimens.small.h),
+                        // last added task
+                        const TaskCardWidget()
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -52,5 +66,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 
