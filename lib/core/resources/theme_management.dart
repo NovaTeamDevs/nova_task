@@ -9,6 +9,9 @@ class ThemeManagement {
       background: const Color(0xFFFFFFFF),
       primary: const Color(0xFF5B67CA),
       primaryContainer: const Color(0xFF5B67CA).withOpacity(0.30)
+    ),
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(fontSize: 18,fontWeight: FontWeight.w700)
     )
   );
 

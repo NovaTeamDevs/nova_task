@@ -41,6 +41,7 @@ dependencies:
   hive_flutter: ^1.1.0
   persian_datetime_picker: ^2.6.0
   shared_preferences: ^2.2.3
+  loading_animation_widget: ^1.2.1
 
 dev_dependencies:
   flutter_test:
