@@ -11,7 +11,8 @@ class ThemeManagement {
       primaryContainer: const Color(0xFF5B67CA).withOpacity(0.30)
     ),
     textTheme: const TextTheme(
-      titleMedium: TextStyle(fontSize: 18,fontWeight: FontWeight.w700)
+      titleMedium: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Color(0xFF10275A)),
+      bodyMedium: TextStyle(color: Color(0xFF10275A))
     )
   );
 
