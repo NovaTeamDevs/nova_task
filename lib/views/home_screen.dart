@@ -73,7 +73,8 @@ class HomeScreen extends StatelessWidget {
                     child: TaskCardWidget(),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 95.h,)
             ],
           )
       ),

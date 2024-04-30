@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/theme_management.dart';
+import 'package:nova_task/views/main_screen.dart';
 import 'package:nova_task/views/splash_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         locale: const Locale("fa"),
         title: AppStrings.appName,
         theme: ThemeManagement.lightTheme,
-        home: const SplashScreen(),
+        home: const MainScreen(),
       ),
     );
   }
