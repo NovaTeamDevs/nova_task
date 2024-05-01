@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/core/widgets/app_button_widget.dart';
 import 'package:nova_task/core/widgets/back_button_widget.dart';
 import 'package:nova_task/core/widgets/select_category_button.dart';
 import 'package:nova_task/core/widgets/selected_date_button.dart';
@@ -48,6 +49,12 @@ class AddOrEditTaskScreen extends StatelessWidget {
                 SizedBox(height: Dimens.large.h),
                 // select category
                 const SelectCategoryButton(),
+                SizedBox(height: Dimens.large.h),
+                // SAVE or EDIT Button
+                AppButtonWidget(
+                  onTap: () {},
+                  text: AppStrings.createTask,
+                )
               ],
             ),
           ),
