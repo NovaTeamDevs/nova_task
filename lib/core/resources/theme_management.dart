@@ -8,11 +8,17 @@ class ThemeManagement {
     colorScheme: ColorScheme.light(
       background: const Color(0xFFFFFFFF),
       primary: const Color(0xFF5B67CA),
+      shadow: Color(0xFFF1F7FF),
       primaryContainer: const Color(0xFF5B67CA).withOpacity(0.30)
     ),
     navigationBarTheme: const NavigationBarThemeData(
       backgroundColor: Colors.white,
 
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFFFFFFFF),
+      surfaceTintColor: Color(0xFFFFFFFF),
+      titleTextStyle: TextStyle(fontFamily: "shabnam",fontSize: 16,fontWeight: FontWeight.w700,color: Color(0xFF10275A)),
     ),
     textTheme: const TextTheme(
       titleMedium: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Color(0xFF10275A)),

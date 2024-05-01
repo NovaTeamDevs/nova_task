@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/controllers/nvaigation_controller.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/views/add_or_edit_task.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key, required this.onChange});
@@ -45,14 +47,17 @@ class BottomNavigation extends StatelessWidget {
                 iconPath: "assets/svgs/Document.svg",
               ),
 
-              Container(
-                width: 50.w,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: context.theme.colorScheme.primary,
-                  shape: BoxShape.circle,
+              GestureDetector(
+                onTap: () => Get.to(const AddOrEditTaskScreen()),
+                child: Container(
+                  width: 50.w,
+                  height: 50.h,
+                  decoration: BoxDecoration(
+                    color: context.theme.colorScheme.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(CupertinoIcons.add,color: Colors.white),
                 ),
-                child: const Icon(CupertinoIcons.add,color: Colors.white),
               ),
 
               _NavItemWidget(
