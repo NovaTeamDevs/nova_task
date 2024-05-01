@@ -9,6 +9,7 @@ class AppStrings {
   static const taskTitleLabel = "عنوان وظیفه";
   static const taskDescription = "توضیحات کوتاه وظیفه";
   static const taskDateLabel = "تاریخ انجام کار";
+  static const selectCategory = "انتخاب دسته بندی";
   static const addTask = "اضافه کردن وظیفه جدید";
   static const todayTaskListHeader = "لیست کارهای امروز شما";
 }
