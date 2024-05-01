@@ -6,6 +6,9 @@ class AppStrings {
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
   static const lastAddedTask = "جدیدترین وظیفه شما";
   static const viewAll = "مشاهده همه";
+  static const taskTitleLabel = "عنوان وظیفه";
+  static const taskDescription = "توضیحات کوتاه وظیفه";
+  static const taskDateLabel = "تاریخ انجام کار";
   static const addTask = "اضافه کردن وظیفه جدید";
   static const todayTaskListHeader = "لیست کارهای امروز شما";
 }
