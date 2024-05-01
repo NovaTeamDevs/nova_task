@@ -8,6 +8,7 @@ import 'package:nova_task/core/widgets/bottom_navigation.dart';
 import 'package:nova_task/views/category_screen.dart';
 import 'package:nova_task/views/home_screen.dart';
 import 'package:nova_task/views/todo_chart_screen.dart';
+import 'package:nova_task/views/todo_list_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -22,11 +23,11 @@ class MainScreen extends StatelessWidget {
             children: [
                IndexedStack(
                 index: controller.selectedIndex,
-                children: [
-                  const HomeScreen(),
-                  const TodoChartScreen(),
-                  const TodoChartScreen(),
-                  const CategoryScreen()
+                children: const [
+                  HomeScreen(),
+                  TodoListScreen(),
+                  TodoChartScreen(),
+                  CategoryScreen()
                 ],
               ),
               Positioned(

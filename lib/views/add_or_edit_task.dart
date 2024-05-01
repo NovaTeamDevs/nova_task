@@ -49,7 +49,7 @@ class AddOrEditTaskScreen extends StatelessWidget {
                 SizedBox(height: Dimens.large.h),
                 // select category
                 const SelectCategoryButton(),
-                SizedBox(height: Dimens.large.h),
+                SizedBox(height: (Dimens.large * 2).h),
                 // SAVE or EDIT Button
                 AppButtonWidget(
                   onTap: () {},
