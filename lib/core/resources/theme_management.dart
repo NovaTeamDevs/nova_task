@@ -9,7 +9,6 @@ class ThemeManagement {
       background: const Color(0xFFFFFFFF),
       primary: const Color(0xFF5B67CA),
       shadow: const Color(0xFFF1F7FF),
-
       primaryContainer: const Color(0xFF5B67CA).withOpacity(0.30)
     ),
     navigationBarTheme: const NavigationBarThemeData(

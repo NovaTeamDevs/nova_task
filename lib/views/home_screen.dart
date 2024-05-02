@@ -37,7 +37,10 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return  CategoryWidget(isFirst: index == 0);
+                  return  Padding(
+                    padding: EdgeInsets.only(right: index == 0 ? Dimens.pageMargin.w : 0,left: Dimens.small.w),
+                    child: const CategoryWidget(),
+                  );
                 },
               ),
             ),

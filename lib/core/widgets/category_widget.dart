@@ -5,9 +5,9 @@ import 'package:nova_task/core/resources/dimens.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({
-    super.key, required this.isFirst,
+    super.key,  this.isFirst,
   });
-  final bool isFirst;
+  final bool? isFirst;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,7 @@ class CategoryWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: EdgeInsets.only(right: isFirst ? Dimens.pageMargin.w : 0,left: Dimens.small.w),
-          width: 110.w,
+          width: 150.w,
           height: 110.h,
           decoration: BoxDecoration(
               color: context.theme.colorScheme.primaryContainer,
