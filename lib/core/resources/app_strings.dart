@@ -2,6 +2,7 @@ class AppStrings {
   AppStrings._();
   static const appName = "NovaTask";
   static const appVersion = "ورژن 1.0.0";
+  static const categoryNameLabel = "عنوان دسته بندی";
   static const createNewCategory = "ایجاد دسته بندی جدید";
   static const welcomeGustUser = "سلام کاربر مهمان عزیز خوش آمدید";
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
@@ -19,5 +20,7 @@ class AppStrings {
   static const taskDateLabel = "تاریخ انجام کار";
   static const selectCategory = "انتخاب دسته بندی";
   static const addTask = "اضافه کردن وظیفه جدید";
+  static const addNewCategory = "ایجاد دسته بندی جدید";
+  static const selectCategoryColor = "انتخاب رنگ پس زمینه دسته بندی";
   static const todayTaskListHeader = "لیست کارهای امروز شما";
 }
