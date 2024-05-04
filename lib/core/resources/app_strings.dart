@@ -7,6 +7,10 @@ class AppStrings {
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
   static const lastAddedTask = "جدیدترین وظیفه شما";
   static const viewAll = "مشاهده همه";
+  static const todayTaskChartTitle = "کار های امروز شما";
+  static const allTaskChartTitle = "همه کارهای شما";
+  static const taskDone = "انجام شده";
+  static const todoTask = "برای انجام";
   static const gustUsername = "کاربر مهمان";
   static const searchTaskHint = "کلمه مورد نظر خود را وارد کنید";
   static const createTask = "ایجاد وظیفه جدید";
