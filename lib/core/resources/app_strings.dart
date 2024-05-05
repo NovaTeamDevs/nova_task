@@ -22,5 +22,6 @@ class AppStrings {
   static const addTask = "اضافه کردن وظیفه جدید";
   static const addNewCategory = "ایجاد دسته بندی جدید";
   static const selectCategoryColor = "انتخاب رنگ پس زمینه دسته بندی";
+  static const selectIconCategory = "انتخاب ایکون دسته بندی";
   static const todayTaskListHeader = "لیست کارهای امروز شما";
 }
