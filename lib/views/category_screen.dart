@@ -2,11 +2,13 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/category_widget.dart';
 import 'package:nova_task/core/widgets/create_category_bottom_sheet_widget.dart';
+import 'package:nova_task/gen/assets.gen.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -74,7 +76,7 @@ class CategoryScreen extends StatelessWidget {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(Icons.category_sharp,size: 64,color: Color(0xFFC6CEDD)),
+                                      SvgPicture.asset(Assets.svgs.plus,height: 48.h,),
                                       SizedBox(height: Dimens.small.h),
                                       const Text(AppStrings.createNewCategory)
                                     ],
