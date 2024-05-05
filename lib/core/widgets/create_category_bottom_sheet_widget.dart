@@ -29,11 +29,15 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
             Text(AppStrings.selectCategoryColor,style: context.textTheme.titleMedium),
             SizedBox(height:Dimens.medium.h),
             // color picker
-            BlockPicker(
-              useInShowDialog: true,
-              availableColors: AppColors.availableColors,
-              pickerColor: Colors.black,
-              onColorChanged: (value) {},),
+            SizedBox(
+              width: 250,
+              height: 160.h,
+              child: BlockPicker(
+                useInShowDialog: true,
+                availableColors: AppColors.availableColors,
+                pickerColor: Colors.black,
+                onColorChanged: (value) {},),
+            ),
             // add category button
             AppButtonWidget(text: AppStrings.createNewCategory, onTap: () {},)
           ],
