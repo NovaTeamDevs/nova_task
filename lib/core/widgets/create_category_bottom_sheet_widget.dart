@@ -9,6 +9,7 @@ import 'package:nova_task/core/resources/app_colors.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/app_button_widget.dart';
+import 'package:nova_task/core/widgets/select_category_icon_widget.dart';
 import 'package:nova_task/core/widgets/text_field_widget.dart';
 
 class CreateCategoryBottomSheetWidget extends StatelessWidget {
@@ -39,18 +40,10 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
                 Wrap(
                   children: List.generate(
                       controller.iconList.length, (index) {
-                        return GestureDetector(
-                          child: AnimatedContainer(
-                            duration: 300.milliseconds,
-                            decoration: BoxDecoration(
-                              color: context.theme.colorScheme.primary,
-                              shape: BoxShape.circle
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(Dimens.small),
-                              child: SvgPicture.asset(controller.iconList[index]),
-                            ),
-                          ),
+                        return SelectCategoryIconWidget(
+                          iconPath: controller.iconList[index],
+                          onTap: () => controller.updateIcon(index),
+                          selected: controller.selectedIcon == index,
                         );
                       }),
                 ),
@@ -77,3 +70,5 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
     );
   }
 }
+
+
