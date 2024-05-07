@@ -16,5 +16,5 @@ class TaskModel extends HiveObject{
   @HiveField(4)
   bool? isDone;
 
-  TaskModel({this.title, this.description, this.date, this.category, this.isDone});
+  TaskModel({this.title, this.description, this.date, this.category, this.isDone = false});
 }

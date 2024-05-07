@@ -1,6 +1,10 @@
 class AppStrings {
   AppStrings._();
   static const appName = "NovaTask";
+  static const changeStatusToDone = "تغییر وظیفه به انجام شده";
+  static const changeStatusTodo = "تغییر وظیفه به انجام نشده";
+  static const editTask = "ویرایش وظیفه";
+  static const removeTask = "حذف وظیفه";
   static const appVersion = "ورژن 1.0.0";
   static const categoryNameLabel = "عنوان دسته بندی";
   static const createNewCategory = "ایجاد دسته بندی جدید";

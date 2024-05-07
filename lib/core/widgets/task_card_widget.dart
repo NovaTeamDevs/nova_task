@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/core/widgets/task_option_bottom_sheet_widget.dart';
 import 'package:nova_task/models/task_model.dart';
 
 class TaskCardWidget extends StatelessWidget {
@@ -25,19 +26,19 @@ class TaskCardWidget extends StatelessWidget {
           // title and description
           Row(
             children: [
-              Column(
-                children: [
-                  Text(task.title!,style: context.textTheme.titleMedium),
-                  SizedBox(height: (Dimens.small - 4).h),
-                  Text(task.description ?? "",style: context.textTheme.bodySmall)
-                ],
-              ),
+              Text(task.title!,style: context.textTheme.titleMedium!.apply(
+                  decoration: task.isDone!? TextDecoration.lineThrough : TextDecoration.none
+              )),
               const Spacer(),
-              IconButton(onPressed: () {
-
-              }, icon: const Icon(Icons.more_vert))
+              InkWell(
+                onTap: () => showModalBottomSheet(context: context, builder: (context) =>  TaskOptionBottomSheetWidget(task: task)),
+                  child: const Icon(Icons.more_vert))
             ],
           ),
+          SizedBox(height: (Dimens.small - 4).h),
+          Text(task.description ?? "",style: context.textTheme.bodySmall!.apply(
+              decoration: task.isDone!? TextDecoration.lineThrough : TextDecoration.none
+          )),
           SizedBox(height: Dimens.medium.h),
           // category name
           Align(
