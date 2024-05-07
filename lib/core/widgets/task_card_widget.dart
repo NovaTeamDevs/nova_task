@@ -50,7 +50,7 @@ class TaskCardWidget extends StatelessWidget {
                   color: task.category!.bgColor!.withOpacity(0.20),
                   borderRadius: BorderRadius.circular(Dimens.small.r)
               ),
-              child: Center(child: Text("دسته بندی",style: context.textTheme.bodyMedium!.copyWith(
+              child: Center(child: Text(task.category!.title!,style: context.textTheme.bodyMedium!.copyWith(
                   color: task.category!.bgColor!
               ),)),
             ),

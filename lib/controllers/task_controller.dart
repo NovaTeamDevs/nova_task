@@ -54,25 +54,19 @@ class TaskController extends GetxController {
   // create task
   void createOrUpdateTask() async {
     if(formKey.currentState!.validate()){
-      if(category == null) {
-        print("please select category...");
-      } else {
+
         if(task == null){
-          Get.back();
-          task = TaskModel(
-            title: titleText.text,
-            description: descriptionText.text,
-            date: dateText.text,
-            category: category
-          );
-          await taskBox.add(task!);
+          if(category == null) {
+            print("please select category...");
+          }
+         _addNewTask();
         } else {
           _updateTask();
         }
-      }
+
     }
   }
-  //update task
+  // update task
   void _updateTask() {
     Get.back();
     task?.title = titleText.text;
@@ -83,10 +77,33 @@ class TaskController extends GetxController {
     }
     task?.save();
   }
+  // add new task
+  void _addNewTask() async {
+    Get.back();
+    task = TaskModel(
+        title: titleText.text,
+        description: descriptionText.text,
+        date: dateText.text,
+        category: category
+    );
+    await taskBox.add(task!);
+  }
+  // initial forms for update
+  void _initialFormsForUpdate() {
+    if(task != null) {
+      titleText.text =   task!.title!;
+      descriptionText.text = task?.description ?? '';
+      dateText.text = task!.date!;
+    }
+  }
 
   @override
   void onInit() {
-    dateText.text = "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}";
+    if(task == null) {
+      dateText.text = "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}";
+    } else {
+      _initialFormsForUpdate();
+    }
     super.onInit();
   }
 }
