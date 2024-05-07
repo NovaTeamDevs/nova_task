@@ -34,7 +34,11 @@ class CategoryWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Dimens.medium.r)
                 ),
                 child: Center(
-                  child: SvgPicture.asset(category.iconPath!,height: 32.h,)
+                  child: SvgPicture.asset(
+                    category.iconPath!,
+                    height: 32.h,
+                    colorFilter: ColorFilter.mode(Colors.white70, BlendMode.srcIn),
+                  )
                 ),
               ),
               SizedBox(height: Dimens.small.h),
