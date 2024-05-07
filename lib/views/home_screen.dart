@@ -17,6 +17,7 @@ import 'package:nova_task/core/widgets/task_card_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:nova_task/models/category_model.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -89,12 +90,17 @@ class HomeScreen extends StatelessWidget {
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                          return const Padding(
-                            padding: EdgeInsets.all(Dimens.small),
-                            child: TaskCardWidget(),
+                          return  Padding(
+                            padding: const EdgeInsets.all(Dimens.small),
+                            child: TaskCardWidget(task: box.values.toList()[index]),
                           );
                         },
-                        childCount: box.values.toList().length,
+                        childCount: box.values
+                            .where((task) =>
+                                task.date ==
+                                "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}")
+                            .toList()
+                            .length,
                       ),
                     );
                   },);

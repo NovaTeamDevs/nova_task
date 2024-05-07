@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/models/task_model.dart';
 
 class TaskCardWidget extends StatelessWidget {
   const TaskCardWidget({
-    super.key,
+    super.key, required this.task,
   });
-
+  final TaskModel task;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Dimens.small),
+      padding: const EdgeInsets.all(Dimens.medium),
       width: double.infinity,
       height: 90.h,
       decoration: BoxDecoration(
-          color: context.theme.colorScheme.primary.withOpacity(0.10),
+          color: task.category!.bgColor!.withOpacity(0.10),
           borderRadius: BorderRadius.circular(Dimens.medium.r)
       ),
       child: Column(
@@ -26,17 +27,15 @@ class TaskCardWidget extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text("عنوان وظبفه",style: context.textTheme.titleMedium),
+                  Text(task.title!,style: context.textTheme.titleMedium),
                   SizedBox(height: (Dimens.small - 4).h),
-                  Text("توضیحات وظیفه",style: context.textTheme.bodySmall)
+                  Text(task.description ?? "",style: context.textTheme.bodySmall)
                 ],
               ),
               const Spacer(),
-              Checkbox(
-                value: false,
-                onChanged: (value) {},
+              IconButton(onPressed: () {
 
-              )
+              }, icon: const Icon(Icons.more_vert))
             ],
           ),
           SizedBox(height: Dimens.medium.h),
@@ -47,11 +46,11 @@ class TaskCardWidget extends StatelessWidget {
               width: 75.w,
               height: 20.h,
               decoration: BoxDecoration(
-                  color: context.theme.colorScheme.primary.withOpacity(0.35),
+                  color: task.category!.bgColor!.withOpacity(0.20),
                   borderRadius: BorderRadius.circular(Dimens.small.r)
               ),
               child: Center(child: Text("دسته بندی",style: context.textTheme.bodyMedium!.copyWith(
-                  color: context.theme.colorScheme.primary
+                  color: task.category!.bgColor!
               ),)),
             ),
           )

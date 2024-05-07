@@ -45,7 +45,10 @@ class AddOrEditTaskScreen extends StatelessWidget {
                             label: AppStrings.taskTitleLabel)
                     ),
                     SizedBox(height: Dimens.large.h),
-                    const TextFieldWidget(label: AppStrings.taskDescription,maxLength: 24),
+                    TextFieldWidget(
+                        controller: taskController.descriptionText,
+                        label: AppStrings.taskDescription,
+                        maxLength: 24),
                     SizedBox(height: Dimens.large.h),
                     // set date
                     Row(
