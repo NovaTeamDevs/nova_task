@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/controllers/category_controller.dart';
 import 'package:nova_task/core/resources/app_colors.dart';
@@ -23,7 +22,6 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
       width: double.infinity,
       child: SingleChildScrollView(
         child: GetBuilder<CategoryController>(
-          init: CategoryController(),
           builder: (controller) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +30,13 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
                 // category title text field
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: Dimens.medium.h),
-                  child: const TextFieldWidget(label: AppStrings.categoryNameLabel),
+                  child: Form(
+                    key: controller.formKey,
+                      child: TextFieldWidget(
+                        controller: controller.categoryText,
+                          validator: controller.validateTitle,
+                          label: AppStrings.categoryNameLabel
+                      )),
                 ),
                 // icon list
                 Text(AppStrings.selectIconCategory,style: context.textTheme.titleMedium),
@@ -42,7 +46,7 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
                       controller.iconList.length, (index) {
                         return SelectCategoryIconWidget(
                           iconPath: controller.iconList[index],
-                          onTap: () => controller.updateIcon(index),
+                          onTap: () => controller.updateIcon(index,controller.iconList[index]),
                           selected: controller.selectedIcon == index,
                         );
                       }),

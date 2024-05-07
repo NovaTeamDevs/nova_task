@@ -1,8 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:nova_task/core/resources/app_strings.dart';
+import 'package:nova_task/core/resources/storage_key.dart';
 import 'package:nova_task/gen/assets.gen.dart';
+import 'package:nova_task/models/category_model.dart';
 
 class CategoryController extends GetxController {
+
+//====================================== Variables =============================
   int selectedIcon = 0;
+  String selectedIconPath = Assets.svgs.aperture;
   final List iconList = [
     Assets.svgs.aperture,
     Assets.svgs.archive,
@@ -52,9 +60,21 @@ class CategoryController extends GetxController {
     Assets.svgs.watch,
     Assets.svgs.youtube
   ];
-
-  void updateIcon(int newIconIndex) {
+  final Box<CategoryModel> categoryBox = Hive.box(StorageKeys.categoryBox);
+  final TextEditingController categoryText = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+//======================================= Methods ==============================
+  void updateIcon(int newIconIndex,String newIcon) {
     selectedIcon = newIconIndex;
+    selectedIconPath = newIcon;
     update();
   }
+  // validate category title
+  String? validateTitle(String? value) {
+    if(value!.isEmpty) {
+      return AppStrings.validateCategoryTitleMsg;
+    }
+    return null;
+  }
+
 }
