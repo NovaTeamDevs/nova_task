@@ -62,10 +62,14 @@ class CreateCategoryBottomSheetWidget extends StatelessWidget {
                     useInShowDialog: true,
                     availableColors: AppColors.availableColors,
                     pickerColor: Colors.black,
-                    onColorChanged: (value) {},),
+                    onColorChanged: (value) => controller.onChangeColor(value)
+                  ),
                 ),
                 // add category button
-                AppButtonWidget(text: AppStrings.createNewCategory, onTap: () {},)
+                AppButtonWidget(
+                  text: AppStrings.createNewCategory,
+                  onTap: () => controller.createCategory(),
+                )
               ],
             );
           }

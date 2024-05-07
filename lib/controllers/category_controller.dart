@@ -11,6 +11,7 @@ class CategoryController extends GetxController {
 //====================================== Variables =============================
   int selectedIcon = 0;
   String selectedIconPath = Assets.svgs.aperture;
+  Color bgColor = const Color(0xff7dc8e7);
   final List iconList = [
     Assets.svgs.aperture,
     Assets.svgs.archive,
@@ -75,6 +76,20 @@ class CategoryController extends GetxController {
       return AppStrings.validateCategoryTitleMsg;
     }
     return null;
+  }
+
+  void onChangeColor(Color newColor) => bgColor = newColor;
+
+  void createCategory(){
+    if(formKey.currentState!.validate()){
+      Get.back();
+      final CategoryModel category = CategoryModel(
+        title: categoryText.text,
+        iconPath: selectedIconPath,
+        bgColor: bgColor
+      );
+      categoryBox.add(category);
+    }
   }
 
 }

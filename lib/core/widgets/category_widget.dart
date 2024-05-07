@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/models/category_model.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({
-    super.key,  this.isFirst,
+    super.key,  this.isFirst, required this.category,
   });
   final bool? isFirst;
-
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +19,7 @@ class CategoryWidget extends StatelessWidget {
           width: 150.w,
           height: 110.h,
           decoration: BoxDecoration(
-              color: context.theme.colorScheme.primaryContainer,
+              color: category.bgColor?.withOpacity(0.30),
               borderRadius: BorderRadius.circular(Dimens.medium.r)
           ),
           child: Column(
@@ -29,15 +30,15 @@ class CategoryWidget extends StatelessWidget {
                 width: 60.w,
                 height: 60.h,
                 decoration: BoxDecoration(
-                    color: context.theme.colorScheme.primaryContainer,
+                    color: category.bgColor,
                     borderRadius: BorderRadius.circular(Dimens.medium.r)
                 ),
                 child: Center(
-                  child: Icon(Icons.access_alarms_sharp,size: 40,color: context.theme.colorScheme.primary.withOpacity(0.80),),
+                  child: SvgPicture.asset(category.iconPath!,height: 32.h,)
                 ),
               ),
               SizedBox(height: Dimens.small.h),
-              const Text("عنوان دسته بندی")
+              Text(category.title!)
             ],
           ),
         ),

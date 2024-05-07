@@ -10,6 +10,7 @@ import 'package:nova_task/core/widgets/list_header_widget.dart';
 import 'package:nova_task/core/widgets/task_card_widget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:nova_task/models/category_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(right: Dimens.small.w, left: Dimens.small.w),
-                          child: const CategoryWidget(),
+                          child:  CategoryWidget(category: CategoryModel()),
                         );
                       },
                     ),
