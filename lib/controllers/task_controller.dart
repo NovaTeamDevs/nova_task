@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:nova_task/core/resources/storage_key.dart';
+import 'package:nova_task/models/category_model.dart';
+import 'package:nova_task/models/task_model.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class TaskController extends GetxController {
@@ -7,6 +11,11 @@ class TaskController extends GetxController {
   final TextEditingController titleText = TextEditingController();
   final TextEditingController descriptionText = TextEditingController();
   final TextEditingController dateText = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final Box<TaskModel> taskBox = Hive.box(StorageKeys.taskBox);
+  final Box<CategoryModel> categoryBoxBox = Hive.box(StorageKeys.categoryBox);
+  CategoryModel? category;
+  int? selectedCategoryIndex;
 
 
 //===================================== Methods ================================
@@ -25,7 +34,13 @@ class TaskController extends GetxController {
     dateText.text = finalTime;
     update();
   }
-
+  // select category
+  void updateCategory(int newIndex,CategoryModel newCategory) {
+    Get.back();
+    selectedCategoryIndex = newIndex;
+    category = newCategory;
+    update();
+  }
 
   @override
   void onInit() {
