@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/storage_key.dart';
 import 'package:nova_task/models/category_model.dart';
 import 'package:nova_task/models/task_model.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class TaskController extends GetxController {
+  TaskController(this.task);
+  TaskModel? task;
 //===================================== Variable ===============================
   final TextEditingController titleText = TextEditingController();
   final TextEditingController descriptionText = TextEditingController();
@@ -40,6 +43,45 @@ class TaskController extends GetxController {
     selectedCategoryIndex = newIndex;
     category = newCategory;
     update();
+  }
+  // validate task title
+  String? validateTitle(String? value) {
+    if(value!.isEmpty) {
+      return AppStrings.validateCategoryTitleMsg;
+    }
+    return null;
+  }
+  // create task
+  void createOrUpdateTask() async {
+    if(formKey.currentState!.validate()){
+      if(category == null) {
+        print("please select category...");
+      } else {
+        if(task == null){
+          Get.back();
+          task = TaskModel(
+            title: titleText.text,
+            description: descriptionText.text,
+            date: dateText.text,
+            category: category
+          );
+          await taskBox.add(task!);
+        } else {
+          _updateTask();
+        }
+      }
+    }
+  }
+  //update task
+  void _updateTask() {
+    Get.back();
+    task?.title = titleText.text;
+    task?.description = descriptionText.text;
+    task?.date = dateText.text;
+    if(category != null){
+      task?.category = category;
+    }
+    task?.save();
   }
 
   @override

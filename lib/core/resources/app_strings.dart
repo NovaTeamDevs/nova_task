@@ -13,6 +13,7 @@ class AppStrings {
   static const taskDone = "انجام شده";
   static const todoTask = "برای انجام";
   static const validateCategoryTitleMsg = "لطفا یک نام برای دسته بندی خود وارد کنید";
+  static const validateTaskTitleMsg = "لطفا یک نام برای وظیفه خود وارد کنید";
   static const gustUsername = "کاربر مهمان";
   static const searchTaskHint = "کلمه مورد نظر خود را وارد کنید";
   static const createTask = "ایجاد وظیفه جدید";

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nova_task/controllers/category_controller.dart';
+import 'package:nova_task/controllers/main_controller.dart';
 import 'package:nova_task/controllers/nvaigation_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
@@ -78,16 +80,25 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return const Padding(
-                    padding: EdgeInsets.all(Dimens.small),
-                    child: TaskCardWidget(),
-                  );
-                },
-                childCount: 20,
-              ),
+            GetBuilder<MainController>(
+              init: MainController(),
+              builder: (controller) {
+                return ValueListenableBuilder(
+                  valueListenable: controller.taskBox.listenable(),
+                  builder: (context, box, child) {
+                    return SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int index) {
+                          return const Padding(
+                            padding: EdgeInsets.all(Dimens.small),
+                            child: TaskCardWidget(),
+                          );
+                        },
+                        childCount: box.values.toList().length,
+                      ),
+                    );
+                  },);
+              },
             ),
             SliverToBoxAdapter(
               child: SizedBox(height: 70.h),

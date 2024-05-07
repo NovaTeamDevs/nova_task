@@ -6,15 +6,15 @@ part 'task_model.g.dart';
 @HiveType(typeId: 1)
 class TaskModel extends HiveObject{
   @HiveField(0)
-  final String? title;
+  String? title;
   @HiveField(1)
-  final String? description;
+  String? description;
   @HiveField(2)
-  final String? date;
+  String? date;
   @HiveField(3)
-  final CategoryModel? category;
+  CategoryModel? category;
   @HiveField(4)
-  final bool? isDone;
+  bool? isDone;
 
   TaskModel({this.title, this.description, this.date, this.category, this.isDone});
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,11 +9,11 @@ import 'package:nova_task/core/widgets/back_button_widget.dart';
 import 'package:nova_task/core/widgets/select_category_button.dart';
 import 'package:nova_task/core/widgets/selected_date_button.dart';
 import 'package:nova_task/core/widgets/text_field_widget.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:nova_task/models/task_model.dart';
 
 class AddOrEditTaskScreen extends StatelessWidget {
-  const AddOrEditTaskScreen({super.key});
-
+  const AddOrEditTaskScreen({super.key, this.task});
+  final TaskModel? task;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class AddOrEditTaskScreen extends StatelessWidget {
           padding: const EdgeInsets.all(Dimens.pageMargin),
           child: SingleChildScrollView(
             child: GetBuilder<TaskController>(
-              init: TaskController(),
+              init: TaskController(task),
               builder: (taskController) {
                 return Column(
                   children: [
@@ -38,7 +37,13 @@ class AddOrEditTaskScreen extends StatelessWidget {
                     ),
                     // forms
                     SizedBox(height: Dimens.medium.h),
-                    const TextFieldWidget(label: AppStrings.taskTitleLabel),
+                    Form(
+                      key: taskController.formKey,
+                        child: TextFieldWidget(
+                            controller: taskController.titleText,
+                            validator: taskController.validateTitle,
+                            label: AppStrings.taskTitleLabel)
+                    ),
                     SizedBox(height: Dimens.large.h),
                     const TextFieldWidget(label: AppStrings.taskDescription,maxLength: 24),
                     SizedBox(height: Dimens.large.h),
@@ -63,7 +68,7 @@ class AddOrEditTaskScreen extends StatelessWidget {
                     SizedBox(height: (Dimens.large * 2).h),
                     // SAVE or EDIT Button
                     AppButtonWidget(
-                      onTap: () {},
+                      onTap: () => taskController.createOrUpdateTask(),
                       text: AppStrings.createTask,
                     )
                   ],

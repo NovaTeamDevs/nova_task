@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nova_task/controllers/nvaigation_controller.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/models/task_model.dart';
 import 'package:nova_task/views/add_or_edit_task.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -48,7 +49,7 @@ class BottomNavigation extends StatelessWidget {
               ),
 
               GestureDetector(
-                onTap: () => Get.to(const AddOrEditTaskScreen()),
+                onTap: () => Get.to( AddOrEditTaskScreen()),
                 child: Container(
                   width: 50.w,
                   height: 50.h,
