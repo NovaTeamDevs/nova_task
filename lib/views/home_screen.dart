@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:nova_task/controllers/category_controller.dart';
+import 'package:nova_task/controllers/nvaigation_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/category_widget.dart';
@@ -40,25 +44,36 @@ class HomeScreen extends StatelessWidget {
                   // category list
                   SizedBox(
                     height: 230.h,
-                    child: GridView.builder(
-                      itemCount: 4,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1.3,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(right: Dimens.small.w, left: Dimens.small.w),
-                          child:  CategoryWidget(category: CategoryModel()),
-                        );
+                    child: GetBuilder<CategoryController>(
+                      init: CategoryController(),
+                      builder: (controller) {
+                        return ValueListenableBuilder<Box<CategoryModel>>(
+                            valueListenable: controller.categoryBox.listenable(),
+                          builder: (context, box, child) {
+                              return GridView.builder(
+                                itemCount: box.values.toList().take(4).length,
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 1.3,
+                                ),
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(right: Dimens.small.w, left: Dimens.small.w),
+                                    child:  CategoryWidget(category: box.values.toList()[index]),
+                                  );
+                                },
+                              );
+                            },);
                       },
-                    ),
+                    )
                   ),
                   SizedBox(height: Dimens.medium.h),
                   // today task list header
                   ListHeaderWidget(
                     title: AppStrings.todayTaskListHeader,
-                    onPress: () {},
+                    onPress: () {
+                      Get.find<NavigationController>().changeIndex(1);
+                    },
                   ),
                 ],
               ),

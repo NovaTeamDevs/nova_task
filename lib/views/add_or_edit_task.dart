@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nova_task/controllers/task_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/app_button_widget.dart';
@@ -9,6 +10,7 @@ import 'package:nova_task/core/widgets/back_button_widget.dart';
 import 'package:nova_task/core/widgets/select_category_button.dart';
 import 'package:nova_task/core/widgets/selected_date_button.dart';
 import 'package:nova_task/core/widgets/text_field_widget.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class AddOrEditTaskScreen extends StatelessWidget {
   const AddOrEditTaskScreen({super.key});
@@ -20,42 +22,53 @@ class AddOrEditTaskScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(Dimens.pageMargin),
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                // app bar
-                Row(
+            child: GetBuilder<TaskController>(
+              init: TaskController(),
+              builder: (taskController) {
+                return Column(
                   children: [
-                    const Spacer(),
-                    Text(AppStrings.addTask,style: context.textTheme.titleMedium),
-                    const Spacer(),
-                    const BackButtonWidget()
+                    // app bar
+                    Row(
+                      children: [
+                        const Spacer(),
+                        Text(AppStrings.addTask,style: context.textTheme.titleMedium),
+                        const Spacer(),
+                        const BackButtonWidget()
+                      ],
+                    ),
+                    // forms
+                    SizedBox(height: Dimens.medium.h),
+                    const TextFieldWidget(label: AppStrings.taskTitleLabel),
+                    SizedBox(height: Dimens.large.h),
+                    const TextFieldWidget(label: AppStrings.taskDescription,maxLength: 24),
+                    SizedBox(height: Dimens.large.h),
+                    // set date
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                         Expanded(child: TextFieldWidget(
+                            controller: taskController.dateText,
+                            label: AppStrings.taskDateLabel,
+                            readOnly: true,
+                        )),
+                        SizedBox(width: Dimens.medium.w,),
+                        SelectedDateButton(
+                          onTap: () => taskController.taskTimePicker(context),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: Dimens.large.h),
+                    // select category
+                    const SelectCategoryButton(),
+                    SizedBox(height: (Dimens.large * 2).h),
+                    // SAVE or EDIT Button
+                    AppButtonWidget(
+                      onTap: () {},
+                      text: AppStrings.createTask,
+                    )
                   ],
-                ),
-                // forms
-                SizedBox(height: Dimens.medium.h),
-                const TextFieldWidget(label: AppStrings.taskTitleLabel),
-                SizedBox(height: Dimens.large.h),
-                const TextFieldWidget(label: AppStrings.taskDescription,maxLength: 24),
-                SizedBox(height: Dimens.large.h),
-                // set date
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Expanded(child: TextFieldWidget(label: AppStrings.taskDateLabel)),
-                    SizedBox(width: Dimens.medium.w,),
-                    const SelectedDateButton(),
-                  ],
-                ),
-                SizedBox(height: Dimens.large.h),
-                // select category
-                const SelectCategoryButton(),
-                SizedBox(height: (Dimens.large * 2).h),
-                // SAVE or EDIT Button
-                AppButtonWidget(
-                  onTap: () {},
-                  text: AppStrings.createTask,
-                )
-              ],
+                );
+              }
             ),
           ),
         ),

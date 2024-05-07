@@ -25,7 +25,7 @@ class CategoryScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(Dimens.pageMargin),
           child: GetBuilder<CategoryController>(
-              init: CategoryController(),
+
             builder: (controller) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
