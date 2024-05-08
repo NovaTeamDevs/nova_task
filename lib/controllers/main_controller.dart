@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:nova_task/core/resources/storage_key.dart';
@@ -7,13 +8,15 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 class MainController extends GetxController {
 //========================================= variables ==========================
 final Box<TaskModel> taskBox = Hive.box(StorageKeys.taskBox);
-
+  final TextEditingController searchText = TextEditingController();
   int? todayTaskDone;
   int? todayTaskNotDone;
   int? allTaskDone;
   int? allTaskNotDone;
   int totalTasks = 0;
+  String? searchKeyWord;
 
+//===================================== methods ================================
   void calculateToDayTaskDone(){
     final todayDate = "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}";
     totalTasks = taskBox.values.toList().where((todo) => todo.date == todayDate).length;
@@ -45,6 +48,11 @@ final Box<TaskModel> taskBox = Hive.box(StorageKeys.taskBox);
     }
     allTaskDone = taskDone;
     allTaskNotDone = taskNotDone;
+    update();
+  }
+
+  void searchTask(String? value){
+    searchKeyWord = value;
     update();
   }
 

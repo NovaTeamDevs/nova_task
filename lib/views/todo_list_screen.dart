@@ -7,6 +7,7 @@ import 'package:nova_task/controllers/main_controller.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/search_text_field_widget.dart';
 import 'package:nova_task/core/widgets/task_card_widget.dart';
+import 'package:nova_task/models/task_model.dart';
 
 class TodoListScreen extends StatelessWidget {
   const TodoListScreen({super.key});
@@ -16,30 +17,39 @@ class TodoListScreen extends StatelessWidget {
     return  SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(Dimens.pageMargin),
-          child: Column(
-            children: [
-              const SearchTextFieldWidget(),
-              SizedBox(height: Dimens.large.h,),
-              GetBuilder<MainController>(
-                builder: (controller) {
-                  return Expanded(
+          child: GetBuilder<MainController>(
+            builder: (controller) {
+              return Column(
+                children: [
+                  SearchTextFieldWidget(
+                      controller: controller.searchText,
+                      onChange: (value) => controller.searchTask(value),
+                  ),
+                  SizedBox(height: Dimens.large.h,),
+                  Expanded(
                       child: ValueListenableBuilder(
                         valueListenable: controller.taskBox.listenable(),
-                         builder: (context, box, child) {
-                           return ListView.builder(
-                             itemCount: box.values.toList().length,
-                             itemBuilder: (context, index) =>  Padding(
-                               padding: const EdgeInsets.all(Dimens.small),
-                               child: TaskCardWidget(task: box.values.toList()[index]),
-                             ),
-                           );
-                         },
+                        builder: (context, box, child) {
+                          final List<TaskModel> taskList;
+                          if(controller.searchKeyWord == '' || controller.searchKeyWord == null) {
+                            taskList = box.values.toList();
+                          } else {
+                            taskList = box.values.where((items) => items.title! == controller.searchKeyWord).toList();
+                          }
+                          return ListView.builder(
+                            itemCount: taskList.length,
+                            itemBuilder: (context, index) =>  Padding(
+                              padding: const EdgeInsets.all(Dimens.small),
+                              child: TaskCardWidget(task: box.values.toList()[index]),
+                            ),
+                          );
+                        },
                       )
-                  );
-                }
-              ),
-              SizedBox(height: (Dimens.large * 3).h,),
-            ],
+                  ),
+                  SizedBox(height: (Dimens.large * 3).h,),
+                ],
+              );
+            }
           ),
         ));
   }

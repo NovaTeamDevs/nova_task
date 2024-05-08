@@ -6,11 +6,13 @@ import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 
 class SearchTextFieldWidget extends StatelessWidget {
-  const SearchTextFieldWidget({super.key, this.controller});
+  const SearchTextFieldWidget({super.key, this.controller, this.onChange});
   final TextEditingController? controller;
+  final Function(String? value)? onChange;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChange,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(Dimens.medium),
         filled: true,
