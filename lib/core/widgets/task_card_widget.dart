@@ -44,7 +44,6 @@ class TaskCardWidget extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
-              width: 75.w,
               height: 20.h,
               decoration: BoxDecoration(
                   color: task.category!.bgColor!.withOpacity(0.20),

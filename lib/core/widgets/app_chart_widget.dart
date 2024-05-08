@@ -38,7 +38,7 @@ class _AppChartWidgetState extends State<AppChartWidget> {
                   sectionsSpace: 0,
                   centerSpaceRadius: 50.r,
                   sections: List.generate(chartData.length, (index) => PieChartSectionData(
-                      title: "${chartData[index].value}%",
+                      title: "",
                       color: chartData[index].color,
                       value: chartData[index].value,
                   )
@@ -61,7 +61,9 @@ class _AppChartWidgetState extends State<AppChartWidget> {
                       color: chartData[index].color
                   ),
                 ),
-                Text(chartData[index].title,style: context.textTheme.bodySmall,)
+                Text(chartData[index].title,style: context.textTheme.bodySmall,),
+                Spacer(),
+                Text("${chartData[index].value.toInt()} وظیفه",style: context.textTheme.bodySmall,)
               ],
             ) ;
           }),
