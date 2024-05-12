@@ -34,7 +34,7 @@ class TaskController extends GetxController {
     var month = time?.month.toString().length == 1 ? "0${time?.month}" : time?.month.toString();
     var day = time?.year.toString().length == 1 ? "0${time?.day}" : time?.day.toString();
     var finalTime = "$year/$month/$day";
-    dateText.text = finalTime;
+    dateText.text = time != null? finalTime : "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}";
     update();
   }
   // select category

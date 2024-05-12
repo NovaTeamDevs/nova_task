@@ -1,10 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nova_task/controllers/category_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
@@ -25,35 +23,10 @@ class CategoryScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(Dimens.pageMargin),
           child: GetBuilder<CategoryController>(
-
             builder: (controller) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //user avatar holder
-                  Container(
-                    width: 80.w,
-                    height: 80.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: context.theme.colorScheme.shadow,
-                          blurRadius: 15,
-                          offset: const Offset(-3,7)
-                        )
-                      ]
-                    ),
-                  ),
-                  // username and change username
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(AppStrings.gustUsername,style: context.textTheme.titleMedium),
-                      IconButton(onPressed: (){}, icon: const Icon(Icons.edit),iconSize: 16,)
-                    ],
-                  ),
                   // category list
                   Expanded(
                       child: ValueListenableBuilder<Box<CategoryModel>>(
