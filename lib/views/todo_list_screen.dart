@@ -34,13 +34,13 @@ class TodoListScreen extends StatelessWidget {
                           if(controller.searchKeyWord == '' || controller.searchKeyWord == null) {
                             taskList = box.values.toList();
                           } else {
-                            taskList = box.values.where((items) => items.title! == controller.searchKeyWord).toList();
+                            taskList = box.values.where((items) => items.title!.contains(controller.searchKeyWord!)).toList();
                           }
                           return ListView.builder(
                             itemCount: taskList.length,
                             itemBuilder: (context, index) =>  Padding(
                               padding: const EdgeInsets.all(Dimens.small),
-                              child: TaskCardWidget(task: box.values.toList()[index]),
+                              child: TaskCardWidget(task: taskList[index]),
                             ),
                           );
                         },
