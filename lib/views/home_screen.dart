@@ -12,11 +12,11 @@ import 'package:nova_task/controllers/nvaigation_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/widgets/category_widget.dart';
+import 'package:nova_task/core/widgets/empty_state.dart';
 import 'package:nova_task/core/widgets/list_header_widget.dart';
 import 'package:nova_task/core/widgets/task_card_widget.dart';
-
-import 'package:flutter/material.dart';
 import 'package:nova_task/models/category_model.dart';
+import 'package:nova_task/models/task_model.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -87,25 +87,23 @@ class HomeScreen extends StatelessWidget {
                 return ValueListenableBuilder(
                   valueListenable: controller.taskBox.listenable(),
                   builder: (context, box, child) {
-                    return SliverList(
+                    final List<TaskModel> taskList = box.values.where((task) => task.date == "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}").toList();
+                    return taskList.isNotEmpty ? SliverList(
                       delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                          return  Padding(
+                          return Padding(
                             padding: const EdgeInsets.all(Dimens.small),
-                            child: TaskCardWidget(task: box.values.toList()[index]),
+                            child:TaskCardWidget(task: taskList[index]),
                           );
                         },
-                        childCount: box.values
-                            .where((task) =>
-                                task.date ==
-                                "${Jalali.now().year}/${Jalali.now().month}/${Jalali.now().day}")
-                            .toList()
-                            .length,
+                        childCount: taskList.length,
                       ),
-                    );
-                  },);
+                    ) : const SliverToBoxAdapter(child: EmptyState());
+                  },
+                );
               },
             ),
+
             SliverToBoxAdapter(
               child: SizedBox(height: 70.h),
             ),

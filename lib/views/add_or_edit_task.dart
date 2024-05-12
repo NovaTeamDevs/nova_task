@@ -55,6 +55,7 @@ class AddOrEditTaskScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                          Expanded(child: TextFieldWidget(
+                           onTap: () => taskController.taskTimePicker(context),
                             controller: taskController.dateText,
                             label: AppStrings.taskDateLabel,
                             readOnly: true,

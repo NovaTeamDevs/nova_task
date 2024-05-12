@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nova_task/controllers/main_controller.dart';
 import 'package:nova_task/core/resources/dimens.dart';
+import 'package:nova_task/core/widgets/empty_state.dart';
 import 'package:nova_task/core/widgets/search_text_field_widget.dart';
 import 'package:nova_task/core/widgets/task_card_widget.dart';
 import 'package:nova_task/models/task_model.dart';
@@ -36,13 +37,13 @@ class TodoListScreen extends StatelessWidget {
                           } else {
                             taskList = box.values.where((items) => items.title!.contains(controller.searchKeyWord!)).toList();
                           }
-                          return ListView.builder(
+                          return taskList.isNotEmpty ? ListView.builder(
                             itemCount: taskList.length,
                             itemBuilder: (context, index) =>  Padding(
                               padding: const EdgeInsets.all(Dimens.small),
-                              child: TaskCardWidget(task: taskList[index]),
+                              child:  TaskCardWidget(task: taskList[index]),
                             ),
-                          );
+                          ) : const EmptyState();
                         },
                       )
                   ),
