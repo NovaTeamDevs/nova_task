@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
+import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/resources/storage_key.dart';
+import 'package:nova_task/core/widgets/show_snack_bar.dart';
 import 'package:nova_task/models/category_model.dart';
 import 'package:nova_task/models/task_model.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
@@ -57,7 +59,7 @@ class TaskController extends GetxController {
 
         if(task == null){
           if(category == null) {
-            print("please select category...");
+           showSnackBar(title: AppStrings.errorTitle,message: AppStrings.nullCategoryErrorMessage,status: SnackBarStatus.error);
           }else {
             _addNewTask();
           }
@@ -68,6 +70,8 @@ class TaskController extends GetxController {
 
     }
   }
+
+
   // update task
   void _updateTask() {
     Get.back();

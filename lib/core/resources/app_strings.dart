@@ -17,6 +17,8 @@ class AppStrings {
   static const allTaskChartTitle = "همه کارهای شما";
   static const taskDone = "انجام شده";
   static const todoTask = "برای انجام";
+  static const errorTitle = "خطا";
+  static const nullCategoryErrorMessage = "لطفا یک دسته بندی انتخاب کنید.";
   static const validateCategoryTitleMsg = "لطفا یک نام برای دسته بندی خود وارد کنید";
   static const validateTaskTitleMsg = "لطفا یک نام برای وظیفه خود وارد کنید";
   static const gustUsername = "کاربر مهمان";
