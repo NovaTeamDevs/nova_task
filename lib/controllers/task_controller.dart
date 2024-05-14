@@ -58,8 +58,10 @@ class TaskController extends GetxController {
         if(task == null){
           if(category == null) {
             print("please select category...");
+          }else {
+            _addNewTask();
           }
-         _addNewTask();
+
         } else {
           _updateTask();
         }
@@ -94,6 +96,7 @@ class TaskController extends GetxController {
       titleText.text =   task!.title!;
       descriptionText.text = task?.description ?? '';
       dateText.text = task!.date!;
+      category = task?.category;
     }
   }
 
