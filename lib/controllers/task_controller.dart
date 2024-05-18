@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:nova_task/controllers/main_controller.dart';
 import 'package:nova_task/core/resources/app_strings.dart';
 import 'package:nova_task/core/resources/dimens.dart';
 import 'package:nova_task/core/resources/storage_key.dart';
@@ -56,16 +57,24 @@ class TaskController extends GetxController {
   // create task
   void createOrUpdateTask() async {
     if(formKey.currentState!.validate()){
-
+        final mainController = Get.find<MainController>();
         if(task == null){
           if(category == null) {
            showSnackBar(title: AppStrings.errorTitle,message: AppStrings.nullCategoryErrorMessage,status: SnackBarStatus.error);
           }else {
-            _addNewTask();
+            await _addNewTask();
+            if(Get.isRegistered<MainController>()) {
+              mainController.calculateAllTaskDone();
+              mainController.calculateToDayTaskDone();
+            }
           }
 
         } else {
           _updateTask();
+          if(Get.isRegistered<MainController>()) {
+            mainController.calculateAllTaskDone();
+            mainController.calculateToDayTaskDone();
+          }
         }
 
     }
@@ -84,7 +93,7 @@ class TaskController extends GetxController {
     task?.save();
   }
   // add new task
-  void _addNewTask() async {
+  Future<void> _addNewTask() async {
     Get.back();
     task = TaskModel(
         title: titleText.text,
