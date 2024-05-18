@@ -16,8 +16,12 @@ class $AssetsPngGen {
   AssetGenImage get emptyState =>
       const AssetGenImage('assets/png/empty_state.png');
 
+  /// File path: assets/png/emptytask.png
+  AssetGenImage get emptytask =>
+      const AssetGenImage('assets/png/emptytask.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [emptyState];
+  List<AssetGenImage> get values => [emptyState, emptytask];
 }
 
 class $AssetsSvgsGen {

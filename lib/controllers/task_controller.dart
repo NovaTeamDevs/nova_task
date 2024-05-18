@@ -62,7 +62,7 @@ class TaskController extends GetxController {
           if(category == null) {
            showSnackBar(title: AppStrings.errorTitle,message: AppStrings.nullCategoryErrorMessage,status: SnackBarStatus.error);
           }else {
-            await _addNewTask();
+             _addNewTask();
             if(Get.isRegistered<MainController>()) {
               mainController.calculateAllTaskDone();
               mainController.calculateToDayTaskDone();

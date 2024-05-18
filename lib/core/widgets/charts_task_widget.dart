@@ -14,48 +14,51 @@ class ChartsTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MainController controller = Get.find<MainController>();
-    return Column(
-      children: [
-        // today task chart
-        Container(
-          width: double.infinity,
-          height: 300.h,
-          padding: const EdgeInsets.all(Dimens.medium * 2),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            color: AppColors.lightRedColor.withOpacity(0.10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(AppStrings.todayTaskChartTitle,style: context.textTheme.titleMedium),
-              AppChartWidget(todoTaskValue:  controller.todayTaskNotDone?.toDouble() ?? 0,endTaskValue: controller.todayTaskDone?.toDouble() ?? 0,)
-            ],
-          ),
-        ),
-        SizedBox(height: Dimens.medium.h),
-        // all task chart
-        Container(
-          width: double.infinity,
-          height: 300.h,
-          padding: const EdgeInsets.all(Dimens.medium * 2),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            color: AppColors.blueColor.withOpacity(0.15),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(AppStrings.allTaskChartTitle,style: context.textTheme.titleMedium),
-              AppChartWidget(todoTaskValue:  controller.allTaskNotDone?.toDouble() ?? 0,endTaskValue: controller.allTaskDone?.toDouble() ?? 0,)
+    return GetBuilder<MainController>(
+      builder: (controller) {
+        return Column(
+          children: [
+            // today task chart
+            Container(
+              width: double.infinity,
+              height: 300.h,
+              padding: const EdgeInsets.all(Dimens.medium * 2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.r),
+                color: AppColors.lightRedColor.withOpacity(0.10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(AppStrings.todayTaskChartTitle,style: context.textTheme.titleMedium),
+                  AppChartWidget(todoTaskValue:  controller.todayTaskNotDone?.toDouble() ?? 0,endTaskValue: controller.todayTaskDone?.toDouble() ?? 0,)
+                ],
+              ),
+            ),
+            SizedBox(height: Dimens.medium.h),
+            // all task chart
+            Container(
+              width: double.infinity,
+              height: 300.h,
+              padding: const EdgeInsets.all(Dimens.medium * 2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.r),
+                color: AppColors.blueColor.withOpacity(0.15),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(AppStrings.allTaskChartTitle,style: context.textTheme.titleMedium),
+                  AppChartWidget(todoTaskValue:  controller.allTaskNotDone?.toDouble() ?? 0,endTaskValue: controller.allTaskDone?.toDouble() ?? 0,)
 
-            ],
-          ),
-        ),
+                ],
+              ),
+            ),
 
-        SizedBox(height: 95.h,)
-      ],
+            SizedBox(height: 95.h,)
+          ],
+        );
+      }
     );
   }
 }

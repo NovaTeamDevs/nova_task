@@ -8,6 +8,7 @@ class AppStrings {
   static const appVersion = "ورژن 1.0.0";
   static const emptyStateMessage = "هیچ وظیفه ای برای نمایش دادن وجود ندارد!";
   static const categoryNameLabel = "عنوان دسته بندی";
+  static const emptyChartsTask = "داده ای جهت نمایش وجود ندارد!";
   static const createNewCategory = "ایجاد دسته بندی جدید";
   static const welcomeGustUser = "سلام دوست من  خوش اومدی.";
   static const homeMessage = "امیدواریم امروز تمام اهدافت رو با موفقیت تیک بزنی!";
