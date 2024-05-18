@@ -26,9 +26,17 @@ class TaskCardWidget extends StatelessWidget {
           // title and description
           Row(
             children: [
-              Text(task.title!,style: context.textTheme.titleMedium!.apply(
-                  decoration: task.isDone!? TextDecoration.lineThrough : TextDecoration.none
+              RichText(text: TextSpan(
+                text: task.title!,
+                style: context.textTheme.titleMedium!.apply(
+                    decoration: task.isDone!? TextDecoration.lineThrough : TextDecoration.none,),
+                children: [
+                  TextSpan(text: " (${task.date})",style: context.textTheme.bodySmall!.apply(
+                    decoration: task.isDone!? TextDecoration.lineThrough : TextDecoration.none
+                  ))
+                ]
               )),
+
               const Spacer(),
               InkWell(
                 onTap: () => showModalBottomSheet(context: context, builder: (context) =>  TaskOptionBottomSheetWidget(task: task)),
